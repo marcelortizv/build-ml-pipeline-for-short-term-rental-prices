@@ -5,18 +5,30 @@ entry_points:
   main:
     parameters:
 
-      parameter1:
-        description: ## ADD DESCRIPTION
+      input_artifact:
+        description: Input csv to be cleaned
         type: string
 
-      parameter2:
-        description: ## ADD DESCRIPTION
+      output_artifact:
+        description: Cleaned csv to save
         type: string
 
-      parameter3:
-        description: ## ADD DESCRIPTION
+      output_type:
+        description: Artifact type for wandb
         type: string
 
+      output_description:
+        description: Artifact description to save in wandb
+        type: string
+
+      min_price:
+        description: Minimum price boundary for outlier removal
+        type: string
+
+      max_price:
+        description: Maximum price boundary for outlier removal
+        type: string
 
     command: >-
-        python run.py  --parameter1 {parameter1}  --parameter2 {parameter2}  --parameter3 {parameter3} 
+        python run.py  --input_artifact {input_artifact}  --output_artifact {output_artifact}  --output_type {output_type}  --output_description {output_description}  --min_price {min_price}  --max_price {max_price}
+
