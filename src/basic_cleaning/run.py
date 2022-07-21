@@ -35,6 +35,9 @@ def main(args):
                  args.min_price, args.max_price)
     dataframe['last_review'] = pd.to_datetime(dataframe['last_review'])
     logger.info("Fixing last_review column type")
+    # drop rows with no proper geolocation
+    idx = dataframe['longitude'].between(-74.25, -73.50) & dataframe['latitude'].between(40.5, 41.2)
+    dataframe = dataframe[idx].copy()
 
     # saving artifact locally
     tmp_artifact_path = os.path.join(args.tmp_directory, args.output_artifact)
